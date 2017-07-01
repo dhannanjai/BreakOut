@@ -1,5 +1,4 @@
 #pragma once
-#include"Graphics.h"
 
 class Vec2
 {
@@ -17,5 +16,4 @@ public:
 	float MagnitudeSq()const;
 	float Magnitude()const;
 	Vec2 Normalised();
-	void DrawVector(Graphics& gfx)const;
 };

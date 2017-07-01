@@ -26,10 +26,9 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd )
 {
-	v1 = Vec2(100, 100);
-	v2 = Vec2(200, 200);
-	v3 = v1 + v2;
-	v2 += v3;
+	Vec2 topLeft(100, 200);
+	a = Rect(topLeft, 100, 100);
+	b = Rect(a);
 }
 
 void Game::Go()
@@ -42,12 +41,12 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (wnd.mouse.LeftIsPressed())
+		a.Draw(gfx, Colors::White);
+	else
+		b.Draw(gfx, Colors::Yellow);
 }
 
 void Game::ComposeFrame()
 {
-	gfx.PutPixel(101, 101, Colors::Yellow);
-	v1.DrawVector(gfx);
-	v2.DrawVector(gfx);
-	v3.DrawVector(gfx);
 }

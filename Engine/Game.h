@@ -22,8 +22,8 @@
 
 #include "Keyboard.h"
 #include "Mouse.h"
-#include "Graphics.h"
-#include "Vec2.h"
+#include "Rect.h"
+
 
 class Game
 {
@@ -43,6 +43,6 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	Vec2 v1, v2, v3;
+	Rect a, b, c;
 	/********************************/
 };

@@ -19,11 +19,6 @@ Vec2 & Vec2::operator+=(const Vec2 & rhs)
 	return *this;
 }
 
-void Vec2::DrawVector(Graphics & gfx) const
-{
-	gfx.PutPixel(int(x), int(y), Colors::White);
-}
-
 Vec2 & Vec2::operator-=(const Vec2 & rhs)
 {
 	// TODO: insert return statement here

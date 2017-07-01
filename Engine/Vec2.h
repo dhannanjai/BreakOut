@@ -1,0 +1,21 @@
+#pragma once
+#include"Graphics.h"
+
+class Vec2
+{
+public:
+		float x;
+		float y;
+public:
+	Vec2(float x, float y);
+	Vec2() = default;
+	Vec2 operator+(const Vec2& rhs)const;
+	Vec2& operator+=(const Vec2& rhs);
+	Vec2 operator-(const Vec2& rhs)const;
+	Vec2& operator-=(const Vec2& rhs);
+	
+	float MagnitudeSq()const;
+	float Magnitude()const;
+	Vec2 Normalised();
+	void DrawVector(Graphics& gfx)const;
+};

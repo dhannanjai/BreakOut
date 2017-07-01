@@ -26,6 +26,10 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd )
 {
+	v1 = Vec2(100, 100);
+	v2 = Vec2(200, 200);
+	v3 = v1 + v2;
+	v2 += v3;
 }
 
 void Game::Go()
@@ -42,5 +46,8 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	gfx.DrawRect(200, 300, 250, 350, Colors::White);
+	gfx.PutPixel(101, 101, Colors::Yellow);
+	v1.DrawVector(gfx);
+	v2.DrawVector(gfx);
+	v3.DrawVector(gfx);
 }

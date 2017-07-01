@@ -42,4 +42,6 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	for (int i = 200; i < 300; i++)
+		gfx.PutPixel(i, i, Colors::Yellow);
 }

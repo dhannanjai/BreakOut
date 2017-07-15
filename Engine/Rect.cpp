@@ -27,7 +27,14 @@ Rect::Rect(const Vec2 center, float radius)
 {
 }
 
+bool Rect::IsOverLappingWith(const Rect & other) const
+{
+	return  right > other.left && left < other.right
+		&& bottom > other.top && top < other.bottom;
+
+}
+
 void Rect::Draw(Graphics & gfx , Color c) const
 {
-	gfx.DrawRect(left, top, right, bottom,c);
+	gfx.DrawRect(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom), c);
 }

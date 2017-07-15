@@ -5,7 +5,6 @@ Ball::Ball(Vec2 center, Vec2 vel)
 {
 	this->center = center;
 	this->vel = vel;
-	this->rect = Rect(center, radius);
 }
 
 void Ball::Draw(Graphics & gfx) const
@@ -16,11 +15,11 @@ void Ball::Draw(Graphics & gfx) const
 void Ball::update(float dt)
 {
 	center += (vel*dt);
-	rect = Rect(center, radius);
 }
 
 void Ball::DoWallCollision(const Rect & wall)
 {
+	Rect rect = Rect(center, radius);
 	if (rect.left < wall.left)
 	{
 		center.x += (wall.left - rect.left);

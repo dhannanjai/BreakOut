@@ -5,7 +5,6 @@
 class Ball
 {
 private:
-	Rect rect;
 	Vec2 center;
 	Vec2 vel;
 	float radius = 7.0f;

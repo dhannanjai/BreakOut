@@ -11,7 +11,7 @@ Rect::Rect(float top, float bottom, float left, float right)
 
 Rect::Rect(const Vec2 topLeft, const Vec2 bottomRight)
 	:
-	Rect(topLeft.y, bottomRight.y, topLeft.x, topLeft.y)
+	Rect(topLeft.y, bottomRight.y, topLeft.x, bottomRight.x)
 {
 }
 

@@ -22,6 +22,7 @@ public:
 	Rect(float top, float bottom, float left, float right);
 	Rect(const Vec2 topLeft, const  Vec2 bottomRight);
 	Rect(const Vec2 topLeft, float width, float height);
+	Rect(const Vec2 center, float radius);
 	bool IsOverLappingWith(const Rect& rect)const;
 	void Draw(Graphics& gfx , Color c)const;
 };

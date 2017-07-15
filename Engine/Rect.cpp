@@ -21,6 +21,12 @@ Rect::Rect(const Vec2 topLeft, float width, float height)
 {
 }
 
+Rect::Rect(const Vec2 center, float radius)
+	:
+	Rect(center - Vec2(radius, radius), center + Vec2(radius, radius))
+{
+}
+
 void Rect::Draw(Graphics & gfx , Color c) const
 {
 	gfx.DrawRect(left, top, right, bottom,c);

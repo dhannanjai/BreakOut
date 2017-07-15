@@ -23,7 +23,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include"Brick.h"
-
+#include"Ball.h"
 
 class Game
 {
@@ -43,6 +43,9 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	Brick brick;
+	static constexpr float brickWidth = 60;
+	static constexpr float brickHeight = 25;
 	/********************************/
+	Brick brick;
+	Ball ball;
 };

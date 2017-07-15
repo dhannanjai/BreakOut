@@ -58,3 +58,20 @@ Rect Ball::GetRect() const
 	return Rect(center, radius);
 }
 
+void Ball::DoPaddleCollision(const Paddle & pad)
+{
+	Rect padRect = pad.GetRect();
+	Rect ballRect = GetRect();
+
+	if (padRect.IsOverLappingWith(ballRect))
+	{
+		float padCenter_y = padRect.top + (padRect.bottom - padRect.top) / 2;
+		if (center.y <= padCenter_y)
+			center.y -= (ballRect.bottom - padRect.top);
+		else
+			center.y += (padRect.bottom - ballRect.top);
+
+		ReboundY();
+	}
+}
+

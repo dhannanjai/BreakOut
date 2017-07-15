@@ -1,6 +1,6 @@
 #pragma once
 
-#include"Rect.h"
+#include"Paddle.h"
 
 class Ball
 {
@@ -16,4 +16,6 @@ public:
 	void ReboundX();
 	void ReboundY();
 	Rect GetRect()const;
+
+	void DoPaddleCollision(const Paddle& pad);
 };

@@ -49,7 +49,7 @@ void Game::UpdateModel()
 	ball.update(dt);
 	ball.DoWallCollision(walls);
 
-	pad.DoBallCollision(ball);
+	ball.DoPaddleCollision(pad);
 }
 
 void Game::ComposeFrame()

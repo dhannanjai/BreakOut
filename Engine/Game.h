@@ -22,6 +22,7 @@
 
 #include "Keyboard.h"
 #include "Mouse.h"
+#include"FrameTimer.h"
 #include"Brick.h"
 #include"Ball.h"
 
@@ -45,7 +46,9 @@ private:
 	/*  User Variables              */
 	static constexpr float brickWidth = 60;
 	static constexpr float brickHeight = 25;
+	FrameTimer ft;
 	/********************************/
 	Brick brick;
 	Ball ball;
+
 };

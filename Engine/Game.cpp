@@ -26,7 +26,7 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	brick(Rect(Vec2(50,100),brickWidth,brickHeight),Colors::Cyan),
-	ball(Rect(Vec2(100,200),14,14))
+	ball(Vec2(200,300),Vec2(-100,-100))
 {
 }
 
@@ -40,6 +40,8 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	const float dt = ft.Mark();
+	ball.update(dt);
 }
 
 void Game::ComposeFrame()

@@ -1,15 +1,21 @@
 #include "Ball.h"
 #include"SpriteCodex.h"
 
-Ball::Ball(Rect rect)
+Ball::Ball(Vec2 center, Vec2 vel)
 	:
-	rect(rect)
+	center(center),
+	vel(vel),
+	rect(center, radius)
 {
 }
 
 void Ball::Draw(Graphics & gfx) const
 {
-	Vec2 center = Vec2(rect.left + (rect.right - rect.left) / 2, rect.top + (rect.bottom - rect.top) / 2);
-		SpriteCodex::DrawBall(center, gfx);
+	SpriteCodex::DrawBall(center, gfx);
+}
+
+void Ball::update(float dt)
+{
+	center += (vel*dt);
 }
 

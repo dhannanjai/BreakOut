@@ -15,4 +15,5 @@ public:
 	void DoWallCollision(const Rect& wall);
 	void ReboundX();
 	void ReboundY();
+	Rect GetRect()const;
 };

@@ -19,7 +19,7 @@ void Ball::update(float dt)
 
 void Ball::DoWallCollision(const Rect & wall)
 {
-	Rect rect = Rect(center, radius);
+	Rect rect = GetRect();
 	if (rect.left < wall.left)
 	{
 		center.x += (wall.left - rect.left);
@@ -51,5 +51,10 @@ void Ball::ReboundX()
 void Ball::ReboundY()
 {
 	vel.y = -vel.y;
+}
+
+Rect Ball::GetRect() const
+{
+	return Rect(center, radius);
 }
 

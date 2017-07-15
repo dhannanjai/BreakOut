@@ -25,6 +25,7 @@
 #include"FrameTimer.h"
 #include"Brick.h"
 #include"Ball.h"
+#include"Paddle.h"
 
 class Game
 {
@@ -46,10 +47,13 @@ private:
 	/*  User Variables              */
 	static constexpr float brickWidth = 60;
 	static constexpr float brickHeight = 25;
+	static constexpr float padHeight = 15;
+	static constexpr float padWidth = 80;
+
 	FrameTimer ft;
 	Rect walls;
 	/********************************/
 	Brick brick;
 	Ball ball;
-
+	Paddle pad;
 };

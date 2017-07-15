@@ -12,7 +12,8 @@ public:
 	Vec2& operator+=(const Vec2& rhs);
 	Vec2 operator-(const Vec2& rhs)const;
 	Vec2& operator-=(const Vec2& rhs);
-	
+	Vec2 operator*(const float f)const;
+
 	float MagnitudeSq()const;
 	float Magnitude()const;
 	Vec2 Normalised();

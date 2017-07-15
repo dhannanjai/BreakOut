@@ -26,6 +26,11 @@ Vec2 & Vec2::operator-=(const Vec2 & rhs)
 	return *this;
 }
 
+Vec2 Vec2::operator*(const float f) const
+{
+	return Vec2(x*f, y*f);
+}
+
 float Vec2::MagnitudeSq() const
 {
 	return x*x + y*y;

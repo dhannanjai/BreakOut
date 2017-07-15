@@ -24,11 +24,9 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	brick(Rect(Vec2(50,100),Vec2(100,150)),Colors::Cyan)
 {
-	Vec2 topLeft(100, 200);
-	a = Rect(topLeft, 100, 100);
-	b = Rect(a);
 }
 
 void Game::Go()
@@ -41,12 +39,9 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	if (wnd.mouse.LeftIsPressed())
-		a.Draw(gfx, Colors::White);
-	else
-		b.Draw(gfx, Colors::Yellow);
 }
 
 void Game::ComposeFrame()
 {
+	brick.Draw(gfx);
 }

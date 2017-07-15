@@ -21,12 +21,13 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ),
+	wnd(wnd),
+	gfx(wnd),
+	walls(Rect(0, Graphics::ScreenHeight, 0, Graphics::ScreenWidth)),
 	brick(Rect(Vec2(50,100),brickWidth,brickHeight),Colors::Cyan),
-	ball(Vec2(200,300),Vec2(-100,-100))
+	ball(Vec2(200,300),Vec2(-10,-10))
 {
 }
 
@@ -41,7 +42,8 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
-	ball.update(dt);
+	ball.update(1.0f);
+	ball.DoWallCollision(walls);
 }
 
 void Game::ComposeFrame()

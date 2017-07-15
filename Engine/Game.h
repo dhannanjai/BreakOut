@@ -47,6 +47,7 @@ private:
 	static constexpr float brickWidth = 60;
 	static constexpr float brickHeight = 25;
 	FrameTimer ft;
+	Rect walls;
 	/********************************/
 	Brick brick;
 	Ball ball;

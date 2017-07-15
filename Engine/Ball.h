@@ -13,4 +13,7 @@ public:
 	Ball(Vec2 center, Vec2 vel);
 	void Draw(Graphics& gfx)const;
 	void update(float dt);
+	void DoWallCollision(const Rect& wall);
+	void ReboundX();
+	void ReboundY();
 };

@@ -45,9 +45,11 @@ void Game::UpdateModel()
 	const float dt = ft.Mark();
 	pad.GetInput(wnd.kbd, dt);
 	pad.DoWallCollision(walls);
-
+	
 	ball.update(dt);
 	ball.DoWallCollision(walls);
+
+	pad.DoBallCollision(ball);
 }
 
 void Game::ComposeFrame()

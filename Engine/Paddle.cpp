@@ -48,3 +48,12 @@ void Paddle::DoWallCollision(const Rect & walls)
 	else if (rect.bottom > walls.bottom)
 		pos.y += (walls.bottom - rect.bottom);
 }
+
+void Paddle::DoBallCollision(Ball & ball) const
+{
+	Rect padRect = GetRect();
+	Rect ballRect = ball.GetRect();
+
+	if (padRect.IsOverLappingWith(ballRect))
+		ball.ReboundY();
+}

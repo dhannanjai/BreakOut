@@ -1,6 +1,7 @@
 #pragma once
-#include"Rect.h"
+#include"Ball.h"
 #include"Keyboard.h"
+
 class Paddle
 {
 	float height, width;
@@ -18,4 +19,5 @@ public:
 	void Draw(Graphics& gfx)const;
 	Rect GetRect()const;
 	void DoWallCollision(const Rect& walls);
+	void DoBallCollision(Ball& ball)const;
 };

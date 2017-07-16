@@ -12,10 +12,10 @@ public:
 	Ball(Vec2 center, Vec2 vel);
 	void Draw(Graphics& gfx)const;
 	void update(float dt);
-	void DoWallCollision(const Rect& wall);
 	void ReboundX();
 	void ReboundY();
 	Rect GetRect()const;
 
-	void DoPaddleCollision(const Paddle& pad);
+	bool DoWallCollision(const Rect& wall);
+	bool DoPaddleCollision(const Paddle& pad);
 };

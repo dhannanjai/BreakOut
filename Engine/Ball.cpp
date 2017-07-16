@@ -17,30 +17,35 @@ void Ball::update(float dt)
 	center += (vel*dt);
 }
 
-void Ball::DoWallCollision(const Rect & wall)
+bool Ball::DoWallCollision(const Rect & wall)
 {
 	Rect rect = GetRect();
 	if (rect.left < wall.left)
 	{
 		center.x += (wall.left - rect.left);
 		ReboundX();
+		return true;
 	}
 	else if (rect.right > wall.right)
 	{
 		center.x += (wall.right - rect.right);
 		ReboundX();
+		return true;
 	}
 
 	if (rect.top < wall.top)
 	{
 		center.y += (wall.top - rect.top);
 		ReboundY();
+		return true;
 	}
 	else if (rect.bottom > wall.bottom)
 	{
 		center.y += (wall.bottom - rect.bottom);
 		ReboundY();
+		return true;
 	}
+	return false;
 }
 
 void Ball::ReboundX()
@@ -58,7 +63,7 @@ Rect Ball::GetRect() const
 	return Rect(center, radius);
 }
 
-void Ball::DoPaddleCollision(const Paddle & pad)
+bool Ball::DoPaddleCollision(const Paddle & pad)
 {
 	Rect padRect = pad.GetRect();
 	Rect ballRect = GetRect();
@@ -72,6 +77,8 @@ void Ball::DoPaddleCollision(const Paddle & pad)
 			center.y += (padRect.bottom - ballRect.top);
 
 		ReboundY();
+		return true;
 	}
+	return false;
 }
 

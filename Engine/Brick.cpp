@@ -9,5 +9,15 @@ Brick::Brick(Rect rect, Color c)
 
 void Brick::Draw(Graphics & gfx) const
 {
-	rect.Draw(gfx, c);
+	if(!isCollided)
+		rect.Draw(gfx, c);
+}
+
+bool Brick::BallCollision(Ball & ball)
+{
+	if (!isCollided)
+	{
+		isCollided = rect.IsOverLappingWith(ball.GetRect());
+		return isCollided;
+	}
 }

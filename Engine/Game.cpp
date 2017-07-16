@@ -35,19 +35,29 @@ Game::Game(MainWindow& wnd)
 void Game::Go()
 {
 	gfx.BeginFrame();	
-	UpdateModel();
+	float timeElapsed = ft.Mark();
+	while (timeElapsed)
+	{
+		const float  dt = std::min(0.0025f, timeElapsed);
+		UpdateModel(dt);
+		timeElapsed -= dt;
+	}
 	ComposeFrame();
 	gfx.EndFrame();
 }
 
-void Game::UpdateModel()
+void Game::UpdateModel(float dt)
 {
-	const float dt = ft.Mark();
+
+	ball.update(dt);
+
 	pad.GetInput(wnd.kbd, dt);
 	pad.DoWallCollision(walls);
 	
-	ball.update(dt);
+	
 	ball.DoWallCollision(walls);
+
+	brick.BallCollision(ball);
 
 	ball.DoPaddleCollision(pad);
 }

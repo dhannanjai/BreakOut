@@ -25,7 +25,7 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	walls(Rect(0, Graphics::ScreenHeight, 0, Graphics::ScreenWidth)),
+	walls(Rect(10.0f, Graphics::ScreenHeight - 10.0f, 10.0f, Graphics::ScreenWidth - 10.0f), 10.0f),
 	brick(Rect(Vec2(50,100),brickWidth,brickHeight),Colors::Cyan),
 	ball(Vec2(200,300),Vec2(-300,-300)),
 	pad(Vec2(350, 400), padWidth, padHeight)
@@ -52,10 +52,10 @@ void Game::UpdateModel(float dt)
 	ball.update(dt);
 
 	pad.GetInput(wnd.kbd, dt);
-	pad.DoWallCollision(walls);
+	pad.DoWallCollision(walls.GetRect());
 	
 	
-	ball.DoWallCollision(walls);
+	ball.DoWallCollision(walls.GetRect());
 
 	brick.BallCollision(ball);
 
@@ -67,4 +67,5 @@ void Game::ComposeFrame()
 	brick.Draw(gfx);
 	ball.Draw(gfx);
 	pad.Draw(gfx);
+	walls.Draw(gfx);
 }

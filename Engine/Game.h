@@ -26,6 +26,7 @@
 #include"Brick.h"
 #include"Ball.h"
 #include"Paddle.h"
+#include"Walls.h"
 
 class Game
 {
@@ -51,7 +52,7 @@ private:
 	static constexpr float padWidth = 80;
 
 	FrameTimer ft;
-	Rect walls;
+	Walls walls;
 	/********************************/
 	Brick brick;
 	Ball ball;

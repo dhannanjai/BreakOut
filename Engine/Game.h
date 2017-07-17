@@ -46,15 +46,18 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	static constexpr float brickWidth = 60;
+	static constexpr float brickWidth = 40;
 	static constexpr float brickHeight = 25;
 	static constexpr float padHeight = 15;
 	static constexpr float padWidth = 80;
 
+	static constexpr size_t brickCols = 18;
+	static constexpr size_t brickRows = 4;
+	static constexpr size_t totalBricks = brickCols * brickRows;
 	FrameTimer ft;
 	Walls walls;
 	/********************************/
-	Brick brick;
+	Brick bricks[totalBricks];
 	Ball ball;
 	Paddle pad;
 };

@@ -7,6 +7,7 @@ private:
 	Rect rect;
 	Color c;
 	bool isCollided = false;
+	static constexpr int padding = 1;
 public:
 	Brick() = default;
 	Brick(Rect rect, Color c);

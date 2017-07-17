@@ -9,7 +9,7 @@ class Paddle
 	//Rect rect;
 	
 	Vec2 pos;
-	float speed = 100;
+	float speed = 300;
 	float wingPadding = 3.0f;
 
 	static constexpr Color c = Colors::Yellow;

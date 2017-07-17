@@ -19,7 +19,7 @@ void Brick::Draw(Graphics & gfx) const
 
 bool Brick::BallCollision(const Ball & ball)const
 {
-	return rect.IsOverLappingWith(ball.GetRect());
+	return !hasCollided && rect.IsOverLappingWith(ball.GetRect());
 }
 
 float Brick::CalculateDistanceFromBall(const Ball & ball) const
@@ -32,4 +32,12 @@ float Brick::CalculateDistanceFromBall(const Ball & ball) const
 void Brick::ExecuteBallCollision(Ball & ball)
 {
 	hasCollided = true;
+	Vec2 ballpos = ball.Getcenter();
+
+	if (ballpos.x >= rect.left && ballpos.x <= rect.right)
+	{
+		ball.ReboundY();
+	}
+	else
+		ball.ReboundY();
 }

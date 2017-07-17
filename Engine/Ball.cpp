@@ -63,11 +63,25 @@ Rect Ball::GetRect() const
 	return Rect(center, radius);
 }
 
+Vec2 Ball::Getcenter() const
+{
+	return center;
+}
+
+Vec2 Ball::GetVelocity() const
+{
+	return vel;
+}
+
 bool Ball::DoPaddleCollision(const Paddle & pad)
 {
 	Rect padRect = pad.GetRect();
 	Rect ballRect = GetRect();
-
+	/*
+	This is to make sure that no matter what kind of collision takes place, 
+	the ball will never rebound in a manner so that the ball remains stuck 
+	inside the paddle.
+	*/
 	if (padRect.IsOverLappingWith(ballRect))
 	{
 		float padCenter_y = padRect.top + (padRect.bottom - padRect.top) / 2;
@@ -80,5 +94,7 @@ bool Ball::DoPaddleCollision(const Paddle & pad)
 		return true;
 	}
 	return false;
+
+	//That's it!!
 }
 

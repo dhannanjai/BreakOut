@@ -6,11 +6,13 @@ class Brick
 private:
 	Rect rect;
 	Color c;
-	bool isCollided = false;
+	bool hasCollided;
 	static constexpr int padding = 1;
 public:
 	Brick() = default;
-	Brick(Rect rect, Color c);
+	Brick(const Rect& rect, Color c);
 	void Draw(Graphics& gfx)const;
-	bool BallCollision(Ball& ball);
+	bool BallCollision(const Ball& ball)const;
+	float CalculateDistanceFromBall(const Ball& ball)const;
+	void ExecuteBallCollision(Ball& ball);
 };

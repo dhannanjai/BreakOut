@@ -26,7 +26,7 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	walls(Rect(10.0f, Graphics::ScreenHeight - 10.0f, 10.0f, Graphics::ScreenWidth - 10.0f), 10.0f),
-	ball(Vec2(200,300),Vec2(-300,-300)),
+	ball(Vec2(200,300),Vec2(-100,-100)),
 	pad(Vec2(350, 400), padWidth, padHeight)
 {
 	Color color[4] = {Colors::Blue,Colors::Yellow , Colors::Green,Colors::Cyan};
@@ -43,6 +43,7 @@ Game::Game(MainWindow& wnd)
 									color[c_index]
 								);
 		}
+	
 }
 
 void Game::Go()
@@ -70,8 +71,32 @@ void Game::UpdateModel(float dt)
 	
 	ball.DoWallCollision(walls.GetRect());
 
+	short closestBrickIndex;
+	bool collisionOccured = false;
+	float minDistanceSquared;
+
 	for (int i = 0; i < totalBricks; i++)
-		bricks[i].BallCollision(ball);
+	{
+		if (bricks[i].BallCollision(ball))
+		{
+			float currentDistanceSq = bricks[i].CalculateDistanceFromBall(ball);
+			if (collisionOccured == false)
+			{
+				collisionOccured = true;
+				closestBrickIndex = i;
+				minDistanceSquared = currentDistanceSq;
+			}
+
+			else if (minDistanceSquared > currentDistanceSq)
+			{
+				minDistanceSquared = currentDistanceSq;
+				closestBrickIndex = i;
+			}
+		}
+	}
+	if (collisionOccured == true)
+		bricks[closestBrickIndex].ExecuteBallCollision(ball);
+
 
 	ball.DoPaddleCollision(pad);
 }

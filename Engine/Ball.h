@@ -15,6 +15,8 @@ public:
 	void ReboundX();
 	void ReboundY();
 	Rect GetRect()const;
+	Vec2 Getcenter()const;
+	Vec2 GetVelocity()const;
 
 	bool DoWallCollision(const Rect& wall);
 	bool DoPaddleCollision(const Paddle& pad);

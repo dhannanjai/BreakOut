@@ -26,8 +26,10 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	walls(Rect(10.0f, Graphics::ScreenHeight - 10.0f, 10.0f, Graphics::ScreenWidth - 10.0f), 10.0f),
-	ball(Vec2(200,300),Vec2(-200,-200)),
-	pad(Vec2(350, 500), padWidth, padHeight)
+	ball(Vec2(200, 300), Vec2(-200, -200)),
+	pad(Vec2(350, 500), padWidth, padHeight),
+	soundPad(L"Sounds\\arkpad.wav"),
+	soundBrick(L"Sounds\\arkbrick.wav")
 {
 	Color color[4] = {Colors::Blue,Colors::Yellow , Colors::Green,Colors::Cyan};
 	Vec2 topLeft(40.0f, 40.0f);
@@ -68,7 +70,8 @@ void Game::UpdateModel(float dt)
 	pad.GetInput(wnd.kbd, dt);
 	pad.DoWallCollision(walls.GetRect());
 	
-	ball.DoWallCollision(walls.GetRect());
+	if (ball.DoWallCollision(walls.GetRect()))
+		soundBrick.Play(1.0f, 0.2f);
 
 	
 #pragma region Brick_Collision _with_Ball 
@@ -95,10 +98,14 @@ void Game::UpdateModel(float dt)
 		}
 	}
 	if (collisionOccured == true)
+	{
 		bricks[closestBrickIndex].ExecuteBallCollision(ball);
+		soundBrick.Play(1.0f, 0.2f);
+	}
 #pragma endregion
 
-	ball.DoPaddleCollision(pad);
+	if (ball.DoPaddleCollision(pad))
+	soundPad.Play(1.0f, 0.2f);
 }
 	
 void Game::ComposeFrame()

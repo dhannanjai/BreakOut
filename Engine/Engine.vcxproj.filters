@@ -16,6 +16,12 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{8b6c92a8-f65d-451e-80e3-d65773602b92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sounds">
+      <UniqueIdentifier>{c27292cf-9410-4c90-bfcd-ed5ae340848e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XAudio">
+      <UniqueIdentifier>{23bad946-3361-470f-b6d0-fc27e4c354a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChiliWin.h">
@@ -72,6 +78,27 @@
     <ClInclude Include="Walls.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\XAudio2.h">
+      <Filter>XAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\XAudio2fx.h">
+      <Filter>XAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\xma2defs.h">
+      <Filter>XAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\audiodefs.h">
+      <Filter>XAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\comdecl.h">
+      <Filter>XAudio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -119,6 +146,9 @@
     <ClCompile Include="Walls.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="FramebufferPS.hlsl">
@@ -137,5 +167,27 @@
     <Image Include="Chili.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\Sounds\arkpad.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\Sounds\fart.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\Sounds\ready.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\Sounds\arkbrick.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\XAudio2_7_32.dll">
+      <Filter>XAudio</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\XAudio2_7_64.dll">
+      <Filter>XAudio</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -62,6 +62,12 @@ public:
 			for (int j = y0; j < y1; j++)
 				PutPixel(i, j, c);
 	}
+
+	void DrawIsoRightTriUL(short x, short y, short size,Color c);
+	void DrawIsoRightTriUR(short x, short y, short size, Color c);
+	void DrawIsoRightTriBL(short x, short y, short size, Color c);
+	void DrawIsoRightTriBR(short x, short y, short size, Color c);
+
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;

@@ -240,6 +240,51 @@ Graphics::Graphics( HWNDKey& key )
 		_aligned_malloc( sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
 }
 
+void Graphics::DrawIsoRightTriUL(short x, short y, short size, Color c)
+{
+	for (short level_y = y; level_y < y + size; level_y++)
+	{
+		const short slope_point = level_y - y;
+		
+		for (short level_x = x; level_x < x + size - slope_point; level_x++)
+			PutPixel(level_x, level_y, c);
+	}
+}
+
+void Graphics::DrawIsoRightTriUR(short x, short y, short size, Color c)
+{
+	for (short level_y = y; level_y < y + size; level_y++)
+	{
+		const short slopepoint = level_y - y;
+		
+		for (short level_x = x; level_x > x - size + slopepoint; level_x--)
+			PutPixel(level_x, level_y, c);
+	}
+}
+
+void Graphics::DrawIsoRightTriBL(short x, short y, short size, Color c)
+{
+	for (short level_y = y; level_y > y - size; level_y--)
+	{
+		const short slopepoint = y - level_y;
+
+		for (short level_x = x; level_x < x + size - slopepoint; level_x++)
+			PutPixel(level_x, level_y, c);
+	}
+
+}
+
+void Graphics::DrawIsoRightTriBR(short x, short y, short size, Color c)
+{
+	for (short level_y = y; level_y > y - size; level_y--)
+	{
+		const short slopepoint = y - level_y;
+
+		for (short level_x = x; level_x > x - size + slopepoint; level_x--)
+			PutPixel(level_x, level_y, c);
+	}
+}
+
 Graphics::~Graphics()
 {
 	// free sysbuffer memory (aligned free)

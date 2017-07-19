@@ -34,9 +34,10 @@ bool Rect::IsOverLappingWith(const Rect & other) const
 
 }
 
-bool Rect::IsContainedBy(const Rect & rect) const
+bool Rect::IsContainedBy(const Rect & other) const
 {
-	return false;
+	return left >= other.left && right <= other.right &&
+		top >= other.top && bottom <= other.bottom;
 }
 
 Rect Rect::GetExpanded(float offset) const

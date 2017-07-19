@@ -2,7 +2,7 @@
 
 Paddle::Paddle(Vec2 pos, float width, float height)
 	:
-	halfZoneWidth(0.2*width / 2.0f),
+	halfZoneWidth(static_cast<float>(0.2*width / 2.0f)),
 	exitXfactor(static_cast<float>(maxExitratio * 2 / width)),
 	fixedZoneExitX(static_cast<float>(halfZoneWidth * exitXfactor))
 {

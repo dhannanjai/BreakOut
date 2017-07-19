@@ -4,7 +4,7 @@ Brick::Brick(const Rect& rect, Color c)
 	:
 	rect(rect),
 	hasCollided(false),
-	c(c)
+	bevel(c)
 {
 }
 
@@ -12,8 +12,7 @@ void Brick::Draw(Graphics & gfx) const
 {
 	if (hasCollided == false)
 	{
-		Rect rect_pad = Rect(rect.top + padding, rect.bottom - padding, rect.left + padding, rect.right - padding);
-		rect_pad.Draw(gfx, c);
+		bevel.DrawBeveledBrick(rect.GetExpanded(-float(padding)), bevelSize, gfx);
 	}
 }
 
@@ -45,4 +44,9 @@ void Brick::ExecuteBallCollision(Ball & ball)
 Vec2 Brick::GetCenter() const
 {
 	return Vec2((rect.left + rect.right) / 2.0f, (rect.top + rect.bottom) / 2.0f);
+}
+
+Rect Brick::GetRect() const
+{
+	return rect;
 }

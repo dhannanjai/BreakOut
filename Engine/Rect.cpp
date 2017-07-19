@@ -38,3 +38,8 @@ void Rect::Draw(Graphics & gfx , Color c) const
 {
 	gfx.DrawRect(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom), c);
 }
+
+Rect Rect::GetExpanded(float offset) const
+{
+	return Rect(top + offset, bottom - offset, left + offset, right - offset);
+}

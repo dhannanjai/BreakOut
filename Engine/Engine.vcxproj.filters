@@ -99,6 +99,9 @@
     <ClInclude Include="..\..\..\..\..\Source\Repos\Fart-Annoyed\Engine\XAudio\comdecl.h">
       <Filter>XAudio</Filter>
     </ClInclude>
+    <ClInclude Include="Beveler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -147,6 +150,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Beveler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

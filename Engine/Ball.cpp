@@ -4,7 +4,7 @@
 Ball::Ball(Vec2 center, Vec2 dir)
 {
 	this->center = center;
-	this->dir = dir.Normalised();
+	SetDirection(dir);
 }
 
 void Ball::Draw(Graphics & gfx) const
@@ -73,38 +73,13 @@ Vec2 Ball::GetVelocity() const
 	return dir*speed;
 }
 
-bool Ball::DoPaddleCollision(const Paddle & pad)
+void Ball::SetDirection(const Vec2 & dir)
 {
-	Rect padRect = pad.GetRect();
-	Rect ballRect = GetRect();
-	Vec2 padCenter = Vec2((padRect.left + padRect.right) / 2, padRect.top + (padRect.bottom - padRect.top) / 2);
-	/*
-	This is to make sure that no matter what kind of collision takes place, 
-	the ball will never rebound in a manner so that the ball remains stuck 
-	inside the paddle.
-	*/
-	if ( dir.y > 0 &&  padRect.IsOverLappingWith( ballRect ) )
-	{
-		
-		if (center.y <= padCenter.y)
-			center.y -= (ballRect.bottom - padRect.top);
-		else
-			center.y += (padRect.bottom - ballRect.top);
+	this->dir = Vec2(dir).Normalised();
+}
 
-		//That's it!!
-		//Here on, we are making changes in the velocity of ball now.
-
-		const float xDiffrence = center.x - padCenter.x;
-		dir = Vec2(xDiffrence * exitXfactor, -1.0f).Normalised();
-
-		//I tried so hard, 
-		//and get so far, 
-		//in the end,
-		// the error always fucks up!!!
-		return true;
-	}
-	return false;
-
-	
+void Ball::SetCenter(const Vec2 & center)
+{
+	this->center = center;
 }
 

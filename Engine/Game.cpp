@@ -104,7 +104,7 @@ void Game::UpdateModel(float dt)
 	}
 #pragma endregion
 
-	if (ball.DoPaddleCollision(pad))
+	if (pad.DoBallCollision(ball))
 	soundPad.Play(1.0f, 0.2f);
 }
 	

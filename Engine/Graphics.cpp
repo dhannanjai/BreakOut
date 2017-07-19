@@ -240,6 +240,11 @@ Graphics::Graphics( HWNDKey& key )
 		_aligned_malloc( sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
 }
 
+Rect Graphics::GetScreenRect(void) const
+{
+	return Rect(0.0f, float(ScreenHeight), 0.0f, float(ScreenWidth));
+}
+
 void Graphics::DrawIsoRightTriUL(short x, short y, short size, Color c)
 {
 	for (short level_y = y; level_y < y + size; level_y++)

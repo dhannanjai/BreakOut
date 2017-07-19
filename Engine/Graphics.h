@@ -23,6 +23,7 @@
 #include <wrl.h>
 #include "ChiliException.h"
 #include "Colors.h"
+#include"Rect.h"
 
 class Graphics
 {
@@ -63,6 +64,7 @@ public:
 				PutPixel(i, j, c);
 	}
 
+	Rect GetScreenRect(void)const;
 	void DrawIsoRightTriUL(short x, short y, short size,Color c);
 	void DrawIsoRightTriUR(short x, short y, short size, Color c);
 	void DrawIsoRightTriBL(short x, short y, short size, Color c);

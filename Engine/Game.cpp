@@ -25,7 +25,7 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	walls(Rect(10.0f, Graphics::ScreenHeight - 10.0f, 10.0f, Graphics::ScreenWidth - 10.0f), 10.0f),
+	walls(Graphics::GetScreenRect().GetExpanded(-40.0f), 40.0f, { 20,60,200 }),
 	ball(Vec2(200, 300), Vec2(-200, -200)),
 	pad(Vec2(350, 500), padWidth, padHeight),
 	soundPad(L"Sounds\\arkpad.wav"),

@@ -240,7 +240,7 @@ Graphics::Graphics( HWNDKey& key )
 		_aligned_malloc( sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
 }
 
-Rect Graphics::GetScreenRect(void) const
+Rect Graphics::GetScreenRect(void)
 {
 	return Rect(0.0f, float(ScreenHeight), 0.0f, float(ScreenWidth));
 }

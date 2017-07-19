@@ -6,9 +6,9 @@ class Walls
 private:
 	Rect rect;
 	float width;
-	static constexpr Color c = Colors::Red;
+	Beveler bevel;
 public:
-	Walls(Rect rect,float width);
+	Walls(Rect rect,float width , Color C);
 	void Draw(Graphics& gfx)const;
-	Rect GetRect()const;
+	const Rect& GetRect()const;
 };

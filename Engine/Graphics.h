@@ -68,7 +68,8 @@ public:
 		DrawRect(static_cast<int>(rect.left), static_cast<int>(rect.top), static_cast<int>(rect.right), static_cast<int>(rect.bottom), c);
 	}
 
-	Rect GetScreenRect(void)const;
+	static Rect GetScreenRect(void);
+
 	void DrawIsoRightTriUL(short x, short y, short size,Color c);
 	void DrawIsoRightTriUR(short x, short y, short size, Color c);
 	void DrawIsoRightTriBL(short x, short y, short size, Color c);

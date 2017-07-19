@@ -42,5 +42,5 @@ bool Rect::IsContainedBy(const Rect & other) const
 
 Rect Rect::GetExpanded(float offset) const
 {
-	return Rect(top + offset, bottom - offset, left + offset, right - offset);
+	return Rect(top - offset, bottom + offset, left - offset, right + offset);
 }

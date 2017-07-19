@@ -31,13 +31,18 @@ float Brick::CalculateDistanceFromBall(const Ball & ball) const
 
 void Brick::ExecuteBallCollision(Ball & ball)
 {
-	hasCollided = true;
 	Vec2 ballpos = ball.Getcenter();
 
-	if (ballpos.x >= rect.left && ballpos.x <= rect.right)
-	{
+	if (std::signbit(ball.GetVelocity().x) == std::signbit((ball.Getcenter() - GetCenter()).x))
 		ball.ReboundY();
-	}
+	else if (ballpos.x >= rect.left && ballpos.x <= rect.right)
+		ball.ReboundY();
 	else
-		ball.ReboundY();
+		ball.ReboundX();
+	hasCollided = true;
+}
+
+Vec2 Brick::GetCenter() const
+{
+	return Vec2((rect.left + rect.right) / 2.0f, (rect.top + rect.bottom) / 2.0f);
 }

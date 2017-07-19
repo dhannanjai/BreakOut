@@ -1,6 +1,5 @@
 #pragma once
-#include"Vec2.h"
-#include"Rect.h"
+#include"Graphics.h"
 
 class Ball
 {

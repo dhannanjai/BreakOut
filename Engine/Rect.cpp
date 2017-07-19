@@ -34,9 +34,9 @@ bool Rect::IsOverLappingWith(const Rect & other) const
 
 }
 
-void Rect::Draw(Graphics & gfx , Color c) const
+bool Rect::IsContainedBy(const Rect & rect) const
 {
-	gfx.DrawRect(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom), c);
+	return false;
 }
 
 Rect Rect::GetExpanded(float offset) const

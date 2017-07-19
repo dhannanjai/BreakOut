@@ -63,6 +63,10 @@ public:
 			for (int j = y0; j < y1; j++)
 				PutPixel(i, j, c);
 	}
+	void DrawRect(const Rect& rect, Color c)
+	{
+		DrawRect(static_cast<int>(rect.left), static_cast<int>(rect.top), static_cast<int>(rect.right), static_cast<int>(rect.bottom), c);
+	}
 
 	Rect GetScreenRect(void)const;
 	void DrawIsoRightTriUL(short x, short y, short size,Color c);

@@ -23,6 +23,7 @@ public:
 	Rect(const Vec2 topLeft, float width, float height);
 	Rect(const Vec2 center, float radius);
 	bool IsOverLappingWith(const Rect& rect)const;
-	void Draw(Graphics& gfx, Color c)const;
+	bool IsContainedBy(const Rect& rect)const;
+	
 	Rect GetExpanded(float offset)const;
 };

@@ -1,5 +1,5 @@
 #pragma once
-#include"Rect.h"
+#include"Beveler.h"
 
 class Walls
 {

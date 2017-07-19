@@ -27,10 +27,10 @@ void Paddle::GetInput(Keyboard & kbd ,float dt)
 void Paddle::Draw(Graphics & gfx) const
 {
 	Rect rect = GetRect();
-	rect.Draw(gfx, c);
+	gfx.DrawRect(rect, c);
 	rect.left += wingPadding;
 	rect.right -= wingPadding;
-	rect.Draw(gfx, wingColor);
+	gfx.DrawRect(rect, wingColor);
 }
 
 Rect Paddle::GetRect() const

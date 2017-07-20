@@ -13,7 +13,7 @@ Walls::Walls(Rect rect, float width , Color c)
 
 void Walls::Draw(Graphics & gfx) const
 {
-	bevel.DrawBeveledFrame(rect.GetExpanded(width), width, gfx);
+	bevel.DrawBeveledFrame(rect.GetExpanded(width), width/2, gfx);
 }
 
 const Rect& Walls::GetRect() const

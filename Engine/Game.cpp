@@ -51,6 +51,36 @@ Game::Game(MainWindow& wnd)
 void Game::Go()
 {
 	gfx.BeginFrame();	
+	
+	//here is where the gameState determines the flow of the game.
+	switch (gameState)
+	{
+	case NotStarted:
+		StateNotStarted();
+		break;
+	case Playing:
+		StatePlaying();
+		break;
+	case Dead:
+		StateDead();
+		break;
+	}
+
+	gfx.EndFrame();
+}
+
+void Game::StateNotStarted()
+{
+	SpriteCodex::DrawTitle(Graphics::GetScreenRect().GetCenter(), gfx);
+	if (wnd.kbd.KeyIsPressed(VK_RETURN))
+	{
+		gameState = Playing;
+		ft = FrameTimer();
+	}
+}
+
+void Game::StatePlaying()
+{
 	float timeElapsed = ft.Mark();
 	while (timeElapsed)
 	{
@@ -59,7 +89,11 @@ void Game::Go()
 		timeElapsed -= dt;
 	}
 	ComposeFrame();
-	gfx.EndFrame();
+}
+
+void Game::StateDead()
+{
+	SpriteCodex::DrawGameOver(Graphics::GetScreenRect().GetCenter(), gfx);
 }
 
 void Game::UpdateModel(float dt)
@@ -70,9 +104,13 @@ void Game::UpdateModel(float dt)
 	pad.GetInput(wnd.kbd, dt);
 	pad.DoWallCollision(walls.GetRect());
 	
-	if (ball.DoWallCollision(walls.GetRect()))
-		soundBrick.Play(1.0f, 0.1f);
-
+	if (ball.CheckWallCollision(walls.GetRect()) == true)
+	{
+		gameState = ball.DoWallCollision(walls.GetRect());
+		if(gameState == Playing)
+			soundBrick.Play(1.0f, 0.1f);
+	}
+	
 	
 #pragma region Brick_Collision _with_Ball 
 	short closestBrickIndex;
@@ -107,7 +145,7 @@ void Game::UpdateModel(float dt)
 	if (pad.DoBallCollision(ball))
 	soundPad.Play(1.0f, 0.1f);
 }
-	
+
 void Game::ComposeFrame()
 {
 	for (auto brick : bricks)

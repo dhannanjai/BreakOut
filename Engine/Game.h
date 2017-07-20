@@ -24,10 +24,10 @@
 #include "Mouse.h"
 #include"FrameTimer.h"
 #include"Brick.h"
-#include"Ball.h"
 #include"Paddle.h"
 #include"Walls.h"
 #include"Sound.h"
+#include"SpriteCodex.h"
 
 class Game
 {
@@ -37,15 +37,23 @@ public:
 	Game& operator=( const Game& ) = delete;
 	void Go();
 private:
+	/*  User Functions              */
+	/*******************************/
+	void StatePlaying();
+	void StateDead();
+	void StateNotStarted();
+	/********************************/
+	
+	/********************************/
 	void ComposeFrame();
 	void UpdateModel(float dt);
 	/********************************/
-	/*  User Functions              */
-	/********************************/
+
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
+	GameStates gameState = NotStarted;
 	/*  User Variables              */
 	static constexpr float brickWidth = 40;
 	static constexpr float brickHeight = 25;

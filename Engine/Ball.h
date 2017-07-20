@@ -1,5 +1,6 @@
 #pragma once
 #include"Graphics.h"
+#include"GameStates.h"
 
 class Ball
 {
@@ -17,7 +18,9 @@ public:
 	void ReboundY();
 	void SetDirection(const Vec2& dir);
 	void SetCenter(const Vec2& center);
-	bool DoWallCollision(const Rect & wall);
+
+	bool CheckWallCollision(const Rect& wall);
+	GameStates DoWallCollision(const Rect & wall);
 
 	void Draw(Graphics& gfx)const;
 	Rect GetRect()const;

@@ -17,35 +17,41 @@ void Ball::update(float dt)
 	center += dir *(speed *dt);
 }
 
-bool Ball::DoWallCollision(const Rect & wall)
+bool Ball::CheckWallCollision(const Rect & wall)
+{
+	Rect rect = GetRect();
+	return (rect.left < wall.left || rect.right > wall.right || rect.top < wall.top || rect.bottom > wall.bottom);
+}
+
+GameStates Ball::DoWallCollision(const Rect & wall)
 {
 	Rect rect = GetRect();
 	if (rect.left < wall.left)
 	{
 		center.x += (wall.left - rect.left);
 		ReboundX();
-		return true;
+		return Playing;
 	}
 	else if (rect.right > wall.right)
 	{
 		center.x += (wall.right - rect.right);
 		ReboundX();
-		return true;
+		return Playing;
 	}
 
 	if (rect.top < wall.top)
 	{
 		center.y += (wall.top - rect.top);
 		ReboundY();
-		return true;
+		return Playing;
 	}
 	else if (rect.bottom > wall.bottom)
 	{
 		center.y += (wall.bottom - rect.bottom);
 		ReboundY();
-		return true;
+		return Dead;
 	}
-	return false;
+	return Playing;
 }
 
 void Ball::ReboundX()

@@ -51,10 +51,19 @@ private:
 	static constexpr float brickHeight = 25;
 	static constexpr float padHeight = 15;
 	static constexpr float padWidth = 80;
+	static constexpr float wallThickness = 12.0f;
 
-	static constexpr size_t brickCols = 18;
+	static constexpr size_t brickCols = static_cast<size_t>((Graphics::ScreenWidth - 40) / brickWidth);
 	static constexpr size_t brickRows = 4;
 	static constexpr size_t totalBricks = brickCols * brickRows;
+
+	static constexpr float topSpace = brickHeight * 1.0f;
+
+	static constexpr float fieldWidth = float(totalBricks) * brickWidth;
+	static constexpr float fieldHeight = float(Graphics::ScreenHeight) - wallThickness * 2.0f;
+	
+	static constexpr Color brickColors[4] = { Colors::Red,Colors::Green,Colors::Blue,Colors::Cyan };
+	static constexpr Color wallColor = { 20,60,200 };
 	FrameTimer ft;
 	Walls walls;
 	/********************************/

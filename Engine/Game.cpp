@@ -25,24 +25,24 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	walls(Graphics::GetScreenRect().GetExpanded(-40.0f), 40.0f, { 20,60,200 }),
+	walls(Graphics::GetScreenRect().GetExpanded(-40.0f), 40.0f, wallColor),
 	ball(Vec2(200, 300), Vec2(-200, -200)),
 	pad(Vec2(350, 500), padWidth, padHeight),
 	soundPad(L"Sounds\\arkpad.wav"),
 	soundBrick(L"Sounds\\arkbrick.wav")
 {
-	Color color[4] = {Colors::Blue,Colors::Yellow , Colors::Green,Colors::Cyan};
-	Vec2 topLeft(40.0f, 40.0f);
-	
+	const Vec2 gridTopLeft(walls.GetRect().left, walls.GetRect().top + topSpace);
+
+
 	for (size_t r = 0; r < brickRows; r++)
 		for (size_t c = 0; c < brickCols; c++)
 		{
-			Vec2 point = topLeft + Vec2(c*brickWidth, r*brickHeight);
+			Vec2 point = gridTopLeft + Vec2(c*brickWidth, r*brickHeight);
 			size_t index = r*brickCols + c;
 			int c_index = index % 4;
 			bricks[index] = Brick(
 									Rect(point, point + Vec2(brickWidth, brickHeight)),
-									color[c_index]
+									brickColors[c_index]
 								);
 		}
 	

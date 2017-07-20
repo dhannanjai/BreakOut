@@ -43,7 +43,7 @@ void Brick::ExecuteBallCollision(Ball & ball)
 
 Vec2 Brick::GetCenter() const
 {
-	return Vec2((rect.left + rect.right) / 2.0f, (rect.top + rect.bottom) / 2.0f);
+	return rect.GetCenter();
 }
 
 Rect Brick::GetRect() const

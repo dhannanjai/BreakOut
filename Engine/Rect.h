@@ -26,4 +26,5 @@ public:
 	bool IsContainedBy(const Rect& rect)const;
 	
 	Rect GetExpanded(float offset)const;
+	Vec2 GetCenter()const;
 };

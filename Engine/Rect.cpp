@@ -44,3 +44,8 @@ Rect Rect::GetExpanded(float offset) const
 {
 	return Rect(top - offset, bottom + offset, left - offset, right + offset);
 }
+
+Vec2 Rect::GetCenter() const
+{
+	return Vec2((left + right) / 2, (top + bottom) / 2);
+}

@@ -5,8 +5,8 @@
 class Brick
 {
 private:
-	static constexpr int padding = 2;
-	static constexpr int bevelSize = 3;
+	static constexpr int padding = 1;
+	static constexpr int bevelSize = 5;
 
 	Rect rect;
 	Beveler bevel;

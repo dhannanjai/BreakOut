@@ -26,12 +26,12 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	walls(Graphics::GetScreenRect().GetExpanded(-40.0f), 40.0f, wallColor),
-	ball(Vec2(200, 300), Vec2(-200, -200)),
+	ball(Vec2(200, 300), Vec2(-250, -250)),
 	pad(Vec2(350, 500), padWidth, padHeight),
 	soundPad(L"Sounds\\arkpad.wav"),
 	soundBrick(L"Sounds\\arkbrick.wav")
 {
-	const Vec2 gridTopLeft(walls.GetRect().left, walls.GetRect().top + topSpace);
+	const Vec2 gridTopLeft(walls.GetRect().left + leftSpace, walls.GetRect().top + topSpace);
 
 
 	for (size_t r = 0; r < brickRows; r++)
@@ -71,7 +71,7 @@ void Game::UpdateModel(float dt)
 	pad.DoWallCollision(walls.GetRect());
 	
 	if (ball.DoWallCollision(walls.GetRect()))
-		soundBrick.Play(1.0f, 0.2f);
+		soundBrick.Play(1.0f, 0.1f);
 
 	
 #pragma region Brick_Collision _with_Ball 
@@ -100,12 +100,12 @@ void Game::UpdateModel(float dt)
 	if (collisionOccured == true)
 	{
 		bricks[closestBrickIndex].ExecuteBallCollision(ball);
-		soundBrick.Play(1.0f, 0.2f);
+		soundBrick.Play(1.0f, 0.1f);
 	}
 #pragma endregion
 
 	if (pad.DoBallCollision(ball))
-	soundPad.Play(1.0f, 0.2f);
+	soundPad.Play(1.0f, 0.1f);
 }
 	
 void Game::ComposeFrame()

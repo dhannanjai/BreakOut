@@ -247,33 +247,33 @@ Rect Graphics::GetScreenRect(void)
 
 void Graphics::DrawIsoRightTriUL(short x, short y, short size, Color c)
 {
-	for (short level_y = y; level_y < y + size; level_y++)
+	for (short level_y = y; level_y <= y + size; level_y++)
 	{
 		const short slope_point = level_y - y;
 		
-		for (short level_x = x; level_x < x + size - slope_point; level_x++)
+		for (short level_x = x; level_x <= x + size - slope_point; level_x++)
 			PutPixel(level_x, level_y, c);
 	}
 }
 
 void Graphics::DrawIsoRightTriUR(short x, short y, short size, Color c)
 {
-	for (short level_y = y; level_y < y + size; level_y++)
+	for (short level_y = y; level_y <= y + size; level_y++)
 	{
 		const short slopepoint = level_y - y;
 		
-		for (short level_x = x; level_x > x - size + slopepoint; level_x--)
+		for (short level_x = x; level_x >= x - size + slopepoint; level_x--)
 			PutPixel(level_x, level_y, c);
 	}
 }
 
 void Graphics::DrawIsoRightTriBL(short x, short y, short size, Color c)
 {
-	for (short level_y = y; level_y > y - size; level_y--)
+	for (short level_y = y; level_y >= y - size; level_y--)
 	{
 		const short slopepoint = y - level_y;
 
-		for (short level_x = x; level_x < x + size - slopepoint; level_x++)
+		for (short level_x = x; level_x <= x + size - slopepoint; level_x++)
 			PutPixel(level_x, level_y, c);
 	}
 
@@ -281,11 +281,10 @@ void Graphics::DrawIsoRightTriBL(short x, short y, short size, Color c)
 
 void Graphics::DrawIsoRightTriBR(short x, short y, short size, Color c)
 {
-	for (short level_y = y; level_y > y - size; level_y--)
+	for (short level_x = x; level_x >= x-size; level_x--)
 	{
-		const short slopepoint = y - level_y;
-
-		for (short level_x = x; level_x > x - size + slopepoint; level_x--)
+		short slopepoint = x - level_x;
+		for (short level_y = y; level_y > y - size + slopepoint; level_y--)
 			PutPixel(level_x, level_y, c);
 	}
 }

@@ -83,15 +83,20 @@ void Game::StateNotStarted()
 	}
 }
 
+void Game::DrawReady(float timeElapsed)
+{
+	readyScreenTime -= timeElapsed;
+	SpriteCodex::DrawReady(Graphics::GetScreenRect().GetCenter(), gfx);
+	if (readyScreenTime <= 0.0f)
+		readyScreenDrawn = false;
+}
+
 void Game::StatePlaying()
 {
 	float timeElapsed = ft.Mark();
 	if (readyScreenDrawn == true)
 	{
-		readyScreenTime -= timeElapsed;
-		SpriteCodex::DrawReady(Graphics::GetScreenRect().GetCenter(), gfx);
-		if (readyScreenTime <= 0.0f)
-			readyScreenDrawn = false;
+		DrawReady(timeElapsed);
 	}
 	else
 	{

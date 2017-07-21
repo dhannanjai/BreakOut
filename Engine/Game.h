@@ -42,6 +42,7 @@ private:
 	void StatePlaying();
 	void StateDead();
 	void StateNotStarted();
+	void DrawReady(float timeElapsed);
 	/********************************/
 	
 	/********************************/

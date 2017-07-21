@@ -67,7 +67,7 @@ private:
 
 
 	static constexpr size_t brickCols = 17;
-	static constexpr size_t brickRows = 4;
+	static constexpr size_t brickRows = 8;
 	static constexpr size_t totalBricks = brickCols * brickRows;
 
 	static constexpr Color brickColors[4] = { {230,0,0},{0,230,0},{0,0,230},{0,230,230} };

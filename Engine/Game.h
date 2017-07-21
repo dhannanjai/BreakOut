@@ -58,7 +58,7 @@ private:
 	static constexpr float brickWidth = 40;
 	static constexpr float brickHeight = 25;
 	static constexpr float padHeight = 15;
-	static constexpr float padWidth = 80;
+	static constexpr float padWidth = 120.0f;
 	static constexpr float wallThickness = 12.0f;
 
 	static constexpr float topSpace = brickHeight * 1.0f;
@@ -71,6 +71,7 @@ private:
 
 	static constexpr Color brickColors[4] = { {230,0,0},{0,230,0},{0,0,230},{0,230,230} };
 	static constexpr Color wallColor = { 20,60,200 };
+
 	FrameTimer ft;
 	Walls walls;
 	/********************************/
@@ -80,4 +81,10 @@ private:
 
 	Sound soundPad;
 	Sound soundBrick;
+	Sound soundNotStarted;
+	Sound soundDead;
+	bool soundDeadplayed = false;
+	bool titleScreenDrawn = true;
+
+	float titleScreenTime = 6.0f;
 };

@@ -10,7 +10,7 @@ class Paddle
 	
 	Vec2 pos;
 	float speed = 300;
-	float wingPadding = 3.0f;
+	float wingPadding = 10.0f;
 
 	static constexpr Color c = Colors::Yellow;
 	static constexpr Color wingColor = Colors::Red;

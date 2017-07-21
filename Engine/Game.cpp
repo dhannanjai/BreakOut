@@ -26,10 +26,12 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	walls(Graphics::GetScreenRect().GetExpanded(-40.0f), 40.0f, wallColor),
-	ball(Graphics::GetScreenRect().GetCenter(), Vec2(-0.5f, -0.5f)),
+	ball(Graphics::GetScreenRect().GetCenter(), Vec2(-0.5f, -0.6f)),
 	pad(Vec2(350, 500), padWidth, padHeight),
 	soundPad(L"Sounds\\arkpad.wav"),
-	soundBrick(L"Sounds\\arkbrick.wav")
+	soundBrick(L"Sounds\\arkbrick.wav"),
+	soundNotStarted(L"Sounds\\ready.wav"),
+	soundDead(L"Sounds\\fart.wav")
 {
 	const Vec2 gridTopLeft(walls.GetRect().left + leftSpace, walls.GetRect().top + topSpace);
 
@@ -74,6 +76,8 @@ void Game::StateNotStarted()
 	SpriteCodex::DrawTitle(Graphics::GetScreenRect().GetCenter(), gfx);
 	if (wnd.kbd.KeyIsPressed(VK_RETURN))
 	{
+		soundNotStarted.Play();
+		
 		gameState = Playing;
 		ft = FrameTimer();
 	}
@@ -82,17 +86,33 @@ void Game::StateNotStarted()
 void Game::StatePlaying()
 {
 	float timeElapsed = ft.Mark();
-	while (timeElapsed)
+	if (titleScreenDrawn == true)
 	{
-		const float  dt = std::min(0.0025f, timeElapsed);
-		UpdateModel(dt);
-		timeElapsed -= dt;
+		titleScreenTime -= timeElapsed;
+		SpriteCodex::DrawReady(Graphics::GetScreenRect().GetCenter(), gfx);
+		if (titleScreenTime <= 0.0f)
+			titleScreenDrawn = false;
 	}
-	ComposeFrame();
+	else
+	{
+		while (timeElapsed)
+		{
+			const float  dt = std::min(0.0025f, timeElapsed);
+			UpdateModel(dt);
+			timeElapsed -= dt;
+		}
+		ComposeFrame();
+	}
 }
 
 void Game::StateDead()
 {
+	if (soundDeadplayed == false)
+	{
+		soundDead.Play();
+		soundDeadplayed = true;
+	}
+	
 	SpriteCodex::DrawGameOver(Graphics::GetScreenRect().GetCenter(), gfx);
 }
 

@@ -86,12 +86,12 @@ void Game::StateNotStarted()
 void Game::StatePlaying()
 {
 	float timeElapsed = ft.Mark();
-	if (titleScreenDrawn == true)
+	if (readyScreenDrawn == true)
 	{
-		titleScreenTime -= timeElapsed;
+		readyScreenTime -= timeElapsed;
 		SpriteCodex::DrawReady(Graphics::GetScreenRect().GetCenter(), gfx);
-		if (titleScreenTime <= 0.0f)
-			titleScreenDrawn = false;
+		if (readyScreenTime <= 0.0f)
+			readyScreenDrawn = false;
 	}
 	else
 	{

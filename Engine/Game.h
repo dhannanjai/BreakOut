@@ -84,7 +84,7 @@ private:
 	Sound soundNotStarted;
 	Sound soundDead;
 	bool soundDeadplayed = false;
-	bool titleScreenDrawn = true;
+	bool readyScreenDrawn = true;
 
-	float titleScreenTime = 6.0f;
+	float readyScreenTime = 6.0f;
 };
